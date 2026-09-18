@@ -1,0 +1,10 @@
+services:
+  cordova:
+    build: .
+    volumes:
+        - ./wwwapp:/app/www
+        - ./config.xml:/app/config.xml
+        - ./apks:/app/platforms/android/app/build/outputs/apk
+    ports:
+        - "8122:8000"
+    command: sleep infinity
