@@ -1,0 +1,14 @@
+# Normalize all text files to LF in the repository AND the working tree.
+# Rationale: the working tree was CRLF while the index was LF, which made every
+# file appear as modified and would have baked CRLF into history on the next commit.
+* text=auto eol=lf
+
+# Windows-native scripts must keep CRLF; they fail to run correctly otherwise.
+*.bat text eol=crlf
+*.cmd text eol=crlf
+
+# Binary payloads are never touched by the end-of-line machinery.
+*.apk binary
+*.aab binary
+*.jar binary
+*.so binary
