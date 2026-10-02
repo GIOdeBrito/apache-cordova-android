@@ -1,2 +1,2 @@
-apks/*
-!apks/.gitkeep
+apache-cordova/build/*
+!apache-cordova/build/.gitkeep

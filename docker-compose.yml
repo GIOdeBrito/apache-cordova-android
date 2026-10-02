@@ -1,11 +1,26 @@
 services:
-  cordova:
-    build: .
+  cordova-serve-app:
+    build: ./apache-cordova
     volumes:
         - ./wwwapp:/app/www
-        - ./config.xml:/app/config.xml
-        - ./apks:/app/platforms/android/app/build/outputs/apk
-        - ./entrypoint.sh:/entrypoint.sh:ro
+        - ./apache-cordova/resources:/app/resources
+        - ./apache-cordova/package.json:/app/package.json
+        - ./apache-cordova/entrypoint.sh:/entrypoint.sh:ro
     ports:
         - "8122:8000"
-    entrypoint: ["/bin/bash", "/entrypoint.sh"]
+    entrypoint: [ "/bin/bash", "/entrypoint.sh" ]
+    command: [ "--serve-app" ]
+    profiles: [ "serve" ]
+
+  cordova-build-app:
+    build: ./apache-cordova
+    volumes:
+        - ./wwwapp:/app/www
+        - ./apache-cordova/resources:/app/resources
+        - ./apache-cordova/package.json:/app/package.json
+        - ./apache-cordova/config.xml:/app/config.xml
+        - ./apache-cordova/apks:/app/platforms/android/app/build/outputs/apk
+        - ./apache-cordova/entrypoint.sh:/entrypoint.sh:ro
+    entrypoint: [ "/bin/bash", "/entrypoint.sh" ]
+    command: [ "--build-app" ]
+    profiles: [ "compile" ]

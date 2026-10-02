@@ -1,0 +1,22 @@
+{
+  "name": "org.giodebrito.hellocordova",
+  "displayName": "Hello World",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "build": "cordova build android && cp platforms/android/app/build/outputs/apk/debug/app-debug.apk /apks"
+  },
+  "keywords": [
+    "ecosystem:cordova"
+  ],
+  "author": "GIOdeBrito",
+  "license": "Apache-2.0",
+  "cordova": {
+    "platforms": [
+      "android"
+    ]
+  },
+  "devDependencies": {
+    "cordova-android": "^15.1.0"
+  }
+}

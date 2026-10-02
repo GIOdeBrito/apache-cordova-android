@@ -26,6 +26,6 @@ RUN yes | sdkmanager --licenses && \
 
 WORKDIR /app
 
-RUN cd /app && cordova create . && cordova platform add browser && cordova platform add android
+RUN cd /app && cordova create .
 
 
